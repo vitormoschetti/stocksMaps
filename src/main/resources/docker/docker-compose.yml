@@ -1,0 +1,14 @@
+version: "3"
+services:
+  db:
+    image: "postgres"
+    container_name: "stockMaps-postgres"
+    environment:
+      - POSTGRES_USER = postgres
+      - POSTGRES_PASSWORD = postgres
+      - POSTGRES_DB = stockMaps
+    ports:
+      - "5432:5432"
+    volumes:
+      - /home/valexand/estudos/PostgreSQL:/var/lib/postgresql/data
+      #docker run --name stocksMaps -e POSTGRES_PASSWORD=postgres -p 5432:5432 -v /home/valexand/estudos/PostgreSQL:/var/lib/postgresql/data -d postgres

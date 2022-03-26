@@ -7,11 +7,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum TipoAtivoEnum {
 
-    ACAO("A"),
-    FUNDO_IMOBILIARIO("FII"),
-    STOCK("S"),
-    REIT("R");
-
-    private String value;
+    ACAO,
+    FUNDO_IMOBILIARIO,
+    STOCK,
+    REIT;
 
 }
