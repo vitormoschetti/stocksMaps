@@ -1,4 +1,4 @@
-package br.com.stocksMaps.core;
+package br.com.stocksmaps.core;
 
 public interface IRepository<E extends IEntity> {
 }

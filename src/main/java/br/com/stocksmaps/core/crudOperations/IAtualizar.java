@@ -1,4 +1,4 @@
-package br.com.stocksMaps.core.crudOperations;
+package br.com.stocksmaps.core.crudOperations;
 
 public interface IAtualizar<E, Key, Input> {
 

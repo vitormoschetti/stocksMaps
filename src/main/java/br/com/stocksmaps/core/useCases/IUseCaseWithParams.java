@@ -1,4 +1,4 @@
-package br.com.stocksMaps.core.useCases.interfaces;
+package br.com.stocksmaps.core.useCases;
 
 public interface IUseCaseWithParams<TParams, Tout> {
 

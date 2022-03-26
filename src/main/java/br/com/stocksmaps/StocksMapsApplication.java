@@ -1,4 +1,4 @@
-package br.com.stocksMaps;
+package br.com.stocksmaps;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com</groupId>
-	<artifactId>stocksMaps</artifactId>
+	<artifactId>stocksmaps</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>stocksMaps</name>
+	<name>stocksmaps</name>
 	<description>Backend para mapeamento de carteira finaceira</description>
 	<properties>
 		<java.version>11</java.version>

@@ -1,4 +1,4 @@
-package br.com.stocksMaps.core.factories.interfaces;
+package br.com.stocksmaps.core.factories;
 
 public interface IFactoryWithParams <TParams, TOut>{
 
