@@ -1,5 +1,6 @@
 package br.com.stocksmaps.infra.data.models;
 
+import br.com.stocksmaps.core.IEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = CarteiraModel.TABLE_NAME)
-public class CarteiraModel implements Serializable {
+public class CarteiraModel implements Serializable, IEntity {
 
     public static final String TABLE_NAME = "carteira";
 
@@ -36,4 +37,6 @@ public class CarteiraModel implements Serializable {
     @Column(name = "totalAtual")
     private BigDecimal totalAtual;
 
+    public void criarNovo(Long id, String nome) {
+    }
 }

@@ -61,4 +61,8 @@ public class Carteira {
     public void adicionarReit(Reit reit) {
         this.reits.add(reit);
     }
+
+    public void criarNovo(String nome) {
+        this.nome = nome;
+    }
 }

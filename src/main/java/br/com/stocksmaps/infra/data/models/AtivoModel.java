@@ -1,5 +1,6 @@
 package br.com.stocksmaps.infra.data.models;
 
+import br.com.stocksmaps.core.IEntity;
 import br.com.stocksmaps.domain.enums.TipoAtivoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = AtivoModel.TABLE_NAME)
-public class AtivoModel implements Serializable {
+public class AtivoModel implements Serializable, IEntity {
 
     public static final String TABLE_NAME = "ativo";
 
