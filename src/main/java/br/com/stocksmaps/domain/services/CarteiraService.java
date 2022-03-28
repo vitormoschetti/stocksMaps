@@ -26,7 +26,7 @@ public class CarteiraService implements ICarteiraService {
 
         final var carteira = factoryEntity.create(carteiraInputModel);
 
-        final var entity = repository.salvar(carteira);
+        final var entity = repository.criar(carteira);
 
         return factoryViewModel.create(entity);
     }
