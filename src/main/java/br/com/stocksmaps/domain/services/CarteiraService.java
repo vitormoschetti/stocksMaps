@@ -1,7 +1,7 @@
 package br.com.stocksmaps.domain.services;
 
-import br.com.stocksmaps.application.controllers.inputModel.CarteiraInputModel;
-import br.com.stocksmaps.application.controllers.viewModel.CarteiraViewModel;
+import br.com.stocksmaps.application.dtos.inputModel.CarteiraInputModel;
+import br.com.stocksmaps.application.dtos.viewModel.CarteiraViewModel;
 import br.com.stocksmaps.application.factories.CarteiraInputModelParaCarteira;
 import br.com.stocksmaps.application.factories.CarteiraParaCarteiraViewModel;
 import br.com.stocksmaps.domain.repositories.ICarteiraRepository;
@@ -24,10 +24,10 @@ public class CarteiraService implements ICarteiraService {
     @Override
     public CarteiraViewModel criarCarteira(CarteiraInputModel carteiraInputModel) {
 
-        final var carteira = factoryEntity.create(carteiraInputModel);
+        final var carteira = this.factoryEntity.create(carteiraInputModel);
 
-        final var entity = repository.criar(carteira);
+        final var entity = this.repository.criar(carteira);
 
-        return factoryViewModel.create(entity);
+        return this.factoryViewModel.create(entity);
     }
 }

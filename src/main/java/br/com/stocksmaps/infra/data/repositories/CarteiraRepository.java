@@ -22,8 +22,9 @@ public class CarteiraRepository implements ICarteiraRepository {
 
     @Override
     public Carteira criar(Carteira carteira) {
-        final var carteiraModel = factoryModel.create(carteira);
-        final var model = adapter.salvar(carteiraModel);
-        return factoryEntity.create(model);
+        final var carteiraModel = this.factoryModel.create(carteira);
+
+        final var model = this.adapter.salvar(carteiraModel);
+        return this.factoryEntity.create(model);
     }
 }

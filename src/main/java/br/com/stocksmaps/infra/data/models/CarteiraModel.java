@@ -1,6 +1,7 @@
 package br.com.stocksmaps.infra.data.models;
 
 import br.com.stocksmaps.core.IEntity;
+import br.com.stocksmaps.domain.entities.Carteira;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,7 @@ public class CarteiraModel implements Serializable, IEntity {
     @SequenceGenerator(name = "gen_" + TABLE_NAME, sequenceName = "sq_" + TABLE_NAME, allocationSize = 1)
     private Long id;
 
-    @Column(name = "nome", nullable = false, length = 20)
+    @Column(name = "nome", nullable = false, length = 20, unique = true)
     private String nome;
 
     @JoinColumn(name = "carteira_id")
@@ -37,6 +38,13 @@ public class CarteiraModel implements Serializable, IEntity {
     @Column(name = "totalAtual")
     private BigDecimal totalAtual;
 
-    public void criarNovo(Long id, String nome) {
+    @Column(name = "status")
+    private Character status;
+
+    public void criarNovo(Carteira carteira) {
+        this.nome = carteira.getNome();
+        this.totalInvestido = carteira.getTotalInvestido();
+        this.totalAtual = carteira.getTotalAtual();
+        this.status = carteira.getStatus().getValeu();
     }
 }

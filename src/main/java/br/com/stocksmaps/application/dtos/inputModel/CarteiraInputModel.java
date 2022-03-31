@@ -1,13 +1,11 @@
-package br.com.stocksmaps.application.controllers.inputModel;
+package br.com.stocksmaps.application.dtos.inputModel;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Getter
-@NoArgsConstructor
 public class CarteiraInputModel {
 
     @NotBlank

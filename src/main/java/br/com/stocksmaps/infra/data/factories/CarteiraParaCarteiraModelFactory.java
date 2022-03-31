@@ -11,7 +11,7 @@ public class CarteiraParaCarteiraModelFactory implements IFactoryWithParams<Cart
     @Override
     public CarteiraModel create(Carteira carteira) {
         final var model = new CarteiraModel();
-        model.criarNovo(carteira.getId(), carteira.getNome());
+        model.criarNovo(carteira);
         return model;
     }
 }

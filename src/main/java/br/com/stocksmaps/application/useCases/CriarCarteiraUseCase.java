@@ -1,7 +1,7 @@
 package br.com.stocksmaps.application.useCases;
 
-import br.com.stocksmaps.application.controllers.inputModel.CarteiraInputModel;
-import br.com.stocksmaps.application.controllers.viewModel.CarteiraViewModel;
+import br.com.stocksmaps.application.dtos.inputModel.CarteiraInputModel;
+import br.com.stocksmaps.application.dtos.viewModel.CarteiraViewModel;
 import br.com.stocksmaps.core.useCases.IUseCaseWithParams;
 import br.com.stocksmaps.domain.services.interfaces.ICarteiraService;
 import org.springframework.stereotype.Service;

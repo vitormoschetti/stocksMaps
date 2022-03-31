@@ -1,5 +1,8 @@
 package br.com.stocksmaps.domain.entities;
 
+import br.com.stocksmaps.application.dtos.inputModel.CarteiraInputModel;
+import br.com.stocksmaps.domain.enums.StatusEnum;
+import br.com.stocksmaps.infra.data.models.CarteiraModel;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +24,7 @@ public class Carteira {
     private List<FundoImobiliario> fundosImobiliarios;
     private BigDecimal totalInvestido;
     private BigDecimal totalAtual;
+    private StatusEnum status;
 
     public Carteira(){
         acoes = new ArrayList<>();
@@ -62,7 +66,15 @@ public class Carteira {
         this.reits.add(reit);
     }
 
-    public void criarNovo(String nome) {
-        this.nome = nome;
+    public void criarNovo(CarteiraInputModel inputModel) {
+        this.nome = inputModel.getNome();
+        this.status = StatusEnum.ATIVA;
+        this.totalAtual = BigDecimal.ZERO;
+        this.totalInvestido = BigDecimal.ZERO;
+    }
+
+    public void fromModel(CarteiraModel carteiraModel) {
+        this.id = carteiraModel.getId();
+        this.nome = carteiraModel.getNome();
     }
 }
