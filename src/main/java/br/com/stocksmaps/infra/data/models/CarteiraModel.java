@@ -1,6 +1,7 @@
 package br.com.stocksmaps.infra.data.models;
 
 import br.com.stocksmaps.core.IEntity;
+import br.com.stocksmaps.domain.entities.Ativo;
 import br.com.stocksmaps.domain.entities.Carteira;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -46,5 +47,8 @@ public class CarteiraModel implements Serializable, IEntity {
         this.totalInvestido = carteira.getTotalInvestido();
         this.totalAtual = carteira.getTotalAtual();
         this.status = carteira.getStatus().getValeu();
+    }
+
+    public void adicionar(List<Ativo> ativos) {
     }
 }

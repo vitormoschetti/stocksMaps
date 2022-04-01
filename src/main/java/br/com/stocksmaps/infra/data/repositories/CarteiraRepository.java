@@ -4,8 +4,11 @@ import br.com.stocksmaps.domain.entities.Carteira;
 import br.com.stocksmaps.domain.repositories.ICarteiraRepository;
 import br.com.stocksmaps.infra.data.factories.CarteiraModelParaCarteira;
 import br.com.stocksmaps.infra.data.factories.CarteiraParaCarteiraModelFactory;
+import br.com.stocksmaps.infra.data.models.CarteiraModel;
 import br.com.stocksmaps.infra.data.repositories.adapters.CarteiraRepositoryAdapter;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 @Repository
 public class CarteiraRepository implements ICarteiraRepository {
@@ -26,5 +29,16 @@ public class CarteiraRepository implements ICarteiraRepository {
 
         final var model = this.adapter.salvar(carteiraModel);
         return this.factoryEntity.create(model);
+    }
+
+    @Override
+    public Carteira buscarPorId(Long id) {
+
+        final var optionalCarteiraModel = this.adapter.buscarPorId(id);
+
+        if(optionalCarteiraModel.isEmpty())
+            return null;
+
+        return factoryEntity.create(optionalCarteiraModel.get());
     }
 }

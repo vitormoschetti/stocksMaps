@@ -49,23 +49,6 @@ public class Carteira {
         return Collections.unmodifiableList(reits);
     }
 
-    public void adicionarAcao(Acao acao){
-        //TODO não basta adicionar, tem que fazer preço medio, quantidade
-        this.acoes.add(acao);
-    }
-
-    public void adicionarStock(Stock stock){
-        this.stocks.add(stock);
-    }
-
-    public void adicionarFundoImobiliario(FundoImobiliario fundoImobiliario){
-        this.fundosImobiliarios.add(fundoImobiliario);
-    }
-
-    public void adicionarReit(Reit reit) {
-        this.reits.add(reit);
-    }
-
     public void criarNovo(CarteiraInputModel inputModel) {
         this.nome = inputModel.getNome();
         this.status = StatusEnum.ATIVA;
@@ -76,5 +59,12 @@ public class Carteira {
     public void fromModel(CarteiraModel carteiraModel) {
         this.id = carteiraModel.getId();
         this.nome = carteiraModel.getNome();
+        this.totalInvestido = carteiraModel.getTotalInvestido();
+        this.totalAtual = carteiraModel.getTotalAtual();
+
+        //TODO regra de transformar ativos em entidades.
+    }
+
+    public void adicionar(List<Ativo> ativos) {
     }
 }

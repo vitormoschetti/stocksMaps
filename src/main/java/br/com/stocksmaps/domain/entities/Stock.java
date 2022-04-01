@@ -9,7 +9,7 @@ public class Stock extends Ativo{
 
     private SetorStockEnum segmentoStock;
 
-    Stock(SetorStockEnum segmentoStock){
+    public Stock(SetorStockEnum segmentoStock){
         super(TipoAtivoEnum.STOCK);
         this.segmentoStock = segmentoStock;
     }

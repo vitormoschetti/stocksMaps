@@ -1,13 +1,16 @@
 package br.com.stocksmaps.domain.entities;
 
+import br.com.stocksmaps.application.dtos.inputModel.AtivoInputModel;
 import br.com.stocksmaps.domain.enums.TipoAtivoEnum;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Getter
+@NoArgsConstructor
 public class Ativo {
 
     private String codigo;
@@ -15,21 +18,20 @@ public class Ativo {
     private TipoAtivoEnum tipoAtivo;
     private BigDecimal precoMedio;
     private BigDecimal quantidade;
-    private LocalDateTime dataInicio;
-    private LocalDateTime dataUltimaCompra;
+    private String dataInicio;
+    private String dataUltimaCompra;
 
-
-    Ativo(TipoAtivoEnum tipoAtivo) {
+    public Ativo(TipoAtivoEnum tipoAtivo) {
         this.tipoAtivo = tipoAtivo;
     }
 
-    public void criarAtivo(String codigo, BigDecimal valorAtual, BigDecimal quantidade){
-        this.codigo = codigo;
-        this.valorAtual = valorAtual;
-        this.precoMedio = valorAtual;
-        this.quantidade = quantidade;
-        this.dataInicio = LocalDateTime.now(ZoneOffset.UTC);
-        this.dataUltimaCompra = LocalDateTime.now(ZoneOffset.UTC);
+    public void criarAtivo(AtivoInputModel input) {
+        this.codigo = input.getCodigo();
+        this.valorAtual = input.getValorAtual();
+        this.tipoAtivo = input.getTipoAtivo();
+        this.precoMedio = input.getPrecoMedio();
+        this.quantidade = input.getQuantidade();
+        this.dataUltimaCompra = input.getDataCompra();
     }
 
     //TODO adicionar ativo existente

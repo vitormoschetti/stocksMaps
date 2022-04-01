@@ -42,10 +42,10 @@ public class AtivoModel implements Serializable, IEntity {
     private BigDecimal quantidade;
 
     @Column(name = "dataInicio", nullable = false)
-    private LocalDateTime dataInicio;
+    private String dataInicio;
 
     @Column(name = "dataUltimaCompra", nullable = false)
-    private LocalDateTime dataUltimaCompra;
+    private String dataUltimaCompra;
 
     @Column(name = "segmento", nullable = false, length = 20)
     private String segmento;
