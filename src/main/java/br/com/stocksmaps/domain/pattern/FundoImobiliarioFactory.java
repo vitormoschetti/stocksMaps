@@ -8,6 +8,8 @@ public class FundoImobiliarioFactory implements FactoryAtivo<FundoImobiliario> {
 
     @Override
     public FundoImobiliario create(Ativo input) {
-        return new FundoImobiliario(input);
+        final var fii = new FundoImobiliario();
+        fii.criar(input);
+        return fii;
     }
 }

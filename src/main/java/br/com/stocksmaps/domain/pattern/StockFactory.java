@@ -8,6 +8,8 @@ public class StockFactory implements FactoryAtivo<Stock> {
 
     @Override
     public Stock create(Ativo input) {
-        return new Stock(input);
+        final var stock = new Stock();
+        stock.criar(input);
+        return stock;
     }
 }

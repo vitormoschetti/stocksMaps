@@ -19,7 +19,7 @@ public abstract class Ativo {
     private String dataInicio;
     private String dataUltimaCompra;
 
-    public void criar(AtivoInputModel input) {
+    public void criarNovo(AtivoInputModel input) {
         this.codigo = input.getCodigo();
         this.valorAtual = input.getValorAtual();
         this.tipoAtivo = input.getTipoAtivo();
@@ -28,13 +28,14 @@ public abstract class Ativo {
         this.dataUltimaCompra = input.getDataCompra();
     }
 
-    protected void criar(Ativo input) {
+    public void criar(Ativo input) {
         this.codigo = input.getCodigo();
         this.valorAtual = input.getValorAtual();
         this.tipoAtivo = input.getTipoAtivo();
         this.preco = input.getPreco();
         this.quantidade = input.getQuantidade();
         this.dataUltimaCompra = input.getDataUltimaCompra();
+        validar();
     }
 
     protected abstract void validar();

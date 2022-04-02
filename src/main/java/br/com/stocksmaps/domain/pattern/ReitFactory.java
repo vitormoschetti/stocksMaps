@@ -8,6 +8,8 @@ public class ReitFactory implements FactoryAtivo<Reit> {
 
     @Override
     public Reit create(Ativo input) {
-        return new Reit(input);
+        final var reit = new Reit();
+        reit.criar(input);
+        return reit;
     }
 }

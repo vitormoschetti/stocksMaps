@@ -8,6 +8,8 @@ public class AcaoFactory implements FactoryAtivo<Acao> {
 
     @Override
     public Acao create(Ativo input) {
-        return new Acao(input);
+        final var acao = new Acao();
+        acao.criar(input);
+        return acao;
     }
 }
