@@ -30,11 +30,5 @@ public class AtivoService implements IAtivoService {
 
         carteira.adicionar(ativos);
 
-
-
-
-
-
-
     }
 }

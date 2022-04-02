@@ -6,37 +6,40 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 
 @Getter
 @NoArgsConstructor
-public class Ativo {
+public abstract class Ativo {
 
     private String codigo;
     private BigDecimal valorAtual;
     private TipoAtivoEnum tipoAtivo;
-    private BigDecimal precoMedio;
+    private BigDecimal preco;
     private BigDecimal quantidade;
     private String dataInicio;
     private String dataUltimaCompra;
 
-    public Ativo(TipoAtivoEnum tipoAtivo) {
-        this.tipoAtivo = tipoAtivo;
-    }
-
-    public void criarAtivo(AtivoInputModel input) {
+    public void criar(AtivoInputModel input) {
         this.codigo = input.getCodigo();
         this.valorAtual = input.getValorAtual();
         this.tipoAtivo = input.getTipoAtivo();
-        this.precoMedio = input.getPrecoMedio();
+        this.preco = input.getPreco();
         this.quantidade = input.getQuantidade();
         this.dataUltimaCompra = input.getDataCompra();
     }
 
+    protected void criar(Ativo input) {
+        this.codigo = input.getCodigo();
+        this.valorAtual = input.getValorAtual();
+        this.tipoAtivo = input.getTipoAtivo();
+        this.preco = input.getPreco();
+        this.quantidade = input.getQuantidade();
+        this.dataUltimaCompra = input.getDataUltimaCompra();
+    }
+
+    protected abstract void validar();
+
     //TODO adicionar ativo existente
-
-
 
 
 }

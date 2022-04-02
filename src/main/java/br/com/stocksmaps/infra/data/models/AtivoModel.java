@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = AtivoModel.TABLE_NAME)
-public class AtivoModel implements Serializable, IEntity {
+public abstract class AtivoModel implements Serializable, IEntity {
 
     public static final String TABLE_NAME = "ativo";
 
@@ -46,9 +46,5 @@ public class AtivoModel implements Serializable, IEntity {
 
     @Column(name = "dataUltimaCompra", nullable = false)
     private String dataUltimaCompra;
-
-    @Column(name = "segmento", nullable = false, length = 20)
-    private String segmento;
-
 
 }

@@ -2,10 +2,16 @@ package br.com.stocksmaps.domain.entities;
 
 import br.com.stocksmaps.application.dtos.inputModel.CarteiraInputModel;
 import br.com.stocksmaps.domain.enums.StatusEnum;
+import br.com.stocksmaps.domain.enums.TipoAtivoEnum;
+import br.com.stocksmaps.domain.pattern.AcaoFactory;
+import br.com.stocksmaps.domain.pattern.FundoImobiliarioFactory;
+import br.com.stocksmaps.domain.pattern.ReitFactory;
+import br.com.stocksmaps.domain.pattern.StockFactory;
 import br.com.stocksmaps.infra.data.models.CarteiraModel;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -13,6 +19,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Getter
+@ToString
 @Setter(AccessLevel.PRIVATE)
 public class Carteira {
 
@@ -26,7 +33,7 @@ public class Carteira {
     private BigDecimal totalAtual;
     private StatusEnum status;
 
-    public Carteira(){
+    public Carteira() {
         acoes = new ArrayList<>();
         stocks = new ArrayList<>();
         reits = new ArrayList<>();
@@ -66,5 +73,21 @@ public class Carteira {
     }
 
     public void adicionar(List<Ativo> ativos) {
+
+        ativos.forEach(ativo -> {
+
+            if (ativo.getTipoAtivo().equals(TipoAtivoEnum.ACAO))
+                this.acoes.add(new AcaoFactory().create(ativo));
+
+            if (ativo.getTipoAtivo().equals(TipoAtivoEnum.FUNDO_IMOBILIARIO))
+                this.fundosImobiliarios.add(new FundoImobiliarioFactory().create(ativo));
+
+            if (ativo.getTipoAtivo().equals(TipoAtivoEnum.REIT))
+                this.reits.add(new ReitFactory().create(ativo));
+
+            if (ativo.getTipoAtivo().equals(TipoAtivoEnum.STOCK))
+                this.stocks.add(new StockFactory().create(ativo));
+        });
+
     }
 }

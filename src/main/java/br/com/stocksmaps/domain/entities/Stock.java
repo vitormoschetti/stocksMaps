@@ -1,16 +1,16 @@
 package br.com.stocksmaps.domain.entities;
 
-import br.com.stocksmaps.domain.enums.SetorStockEnum;
-import br.com.stocksmaps.domain.enums.TipoAtivoEnum;
 import lombok.Getter;
 
 @Getter
-public class Stock extends Ativo{
+public class Stock extends Ativo {
 
-    private SetorStockEnum segmentoStock;
+    public Stock(Ativo ativo) {
+        this.criar(ativo);
+    }
 
-    public Stock(SetorStockEnum segmentoStock){
-        super(TipoAtivoEnum.STOCK);
-        this.segmentoStock = segmentoStock;
+    @Override
+    protected void validar() {
+
     }
 }
