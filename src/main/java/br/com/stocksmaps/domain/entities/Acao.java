@@ -9,6 +9,4 @@ public class Acao extends Ativo {
     protected void validar() {
     }
 
-
-
 }

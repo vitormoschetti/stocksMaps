@@ -39,7 +39,7 @@ public class AtivoModel implements Serializable, IEntity {
     private BigDecimal preco;
 
     @Column(name = "quantidade", nullable = false)
-    private Double quantidade;
+    private BigDecimal quantidade;
 
     @Column(name = "dataUltimaCompra", nullable = false)
     private String dataUltimaCompra;

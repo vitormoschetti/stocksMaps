@@ -2,6 +2,7 @@ package br.com.stocksmaps.domain.entities;
 
 import br.com.stocksmaps.application.dtos.inputModel.AtivoInputModel;
 import br.com.stocksmaps.domain.enums.TipoAtivoEnum;
+import br.com.stocksmaps.infra.data.models.AtivoModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +17,7 @@ public abstract class Ativo {
     private String codigo;
     private TipoAtivoEnum tipoAtivo;
     private BigDecimal preco;
-    private Double quantidade;
+    private BigDecimal quantidade;
     private String dataUltimaCompra;
 
     public void criarNovo(AtivoInputModel input) {
@@ -25,6 +26,15 @@ public abstract class Ativo {
         this.preco = input.getPreco();
         this.quantidade = input.getQuantidade();
         this.dataUltimaCompra = input.getDataCompra();
+    }
+
+    public void criar(AtivoModel input) {
+        this.id = input.getId();
+        this.codigo = input.getCodigo();
+        this.tipoAtivo = input.getTipoAtivo();
+        this.preco = input.getPreco();
+        this.quantidade = input.getQuantidade();
+        this.dataUltimaCompra = input.getDataUltimaCompra();
     }
 
     public void criar(Ativo input) {
@@ -45,27 +55,22 @@ public abstract class Ativo {
         this.atualizarDataCompra(ativo.getDataUltimaCompra());
     }
 
-    private void adicionarQuantidade(Double quantidade) {
-        this.quantidade += quantidade;
+    private void adicionarQuantidade(BigDecimal quantidade) {
+        this.quantidade = this.quantidade.add(quantidade);
     }
 
     private void atualizarDataCompra(String dataUltimaCompra) {
         this.dataUltimaCompra = dataUltimaCompra;
     }
 
-    private void fazerPrecoMedio(BigDecimal precoMedio, Double quantidade) {
-        this.preco = (this.totalAtivo(this.preco, this.quantidade).add(this.totalAtivo(precoMedio, quantidade))).divide(BigDecimal.valueOf(this.quantidade + quantidade), 2, RoundingMode.HALF_UP);
+    private void fazerPrecoMedio(BigDecimal precoMedio, BigDecimal quantidade) {
+        this.preco = (this.totalAtivo(this.preco, this.quantidade).add(this.totalAtivo(precoMedio, quantidade))).divide(this.quantidade.add(quantidade), 2, RoundingMode.HALF_UP);
     }
 
-    private BigDecimal totalAtivo(BigDecimal precoMedio, Double quantidade) {
-        return precoMedio.multiply(BigDecimal.valueOf(quantidade));
+    private BigDecimal totalAtivo(BigDecimal precoMedio, BigDecimal quantidade) {
+        return precoMedio.multiply(quantidade);
     }
 
-
-
-    private BigDecimal precoMedio(BigDecimal valor, Double quantidade) {
-        return valor.multiply(BigDecimal.valueOf(quantidade));
-    }
 
     //TODO adicionar ativo existente
 
