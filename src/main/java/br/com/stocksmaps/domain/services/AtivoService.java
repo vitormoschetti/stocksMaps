@@ -2,6 +2,7 @@ package br.com.stocksmaps.domain.services;
 
 import br.com.stocksmaps.application.dtos.inputModel.AtivosInputModel;
 import br.com.stocksmaps.application.factories.AtivoInputModelParaListAtivos;
+import br.com.stocksmaps.domain.entities.Carteira;
 import br.com.stocksmaps.domain.services.interfaces.IAtivoService;
 import br.com.stocksmaps.infra.data.repositories.CarteiraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class AtivoService implements IAtivoService {
     }
 
     @Override
-    public void adicionar(Long idCarteira, AtivosInputModel input) {
+    public Carteira adicionar(Long idCarteira, AtivosInputModel input) {
 
         //TODO adicionar validacao se carteira é nula (notification pattern)
 
@@ -30,5 +31,8 @@ public class AtivoService implements IAtivoService {
 
         carteira.adicionar(ativos);
 
+        this.carteiraRepository.criar(carteira);
+
+        return carteira;
     }
 }

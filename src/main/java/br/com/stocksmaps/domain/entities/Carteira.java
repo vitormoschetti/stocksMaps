@@ -68,6 +68,7 @@ public class Carteira {
         this.nome = carteiraModel.getNome();
         this.totalInvestido = carteiraModel.getTotalInvestido();
         this.totalAtual = carteiraModel.getTotalAtual();
+        this.status = StatusEnum.find(carteiraModel.getStatus());
 
         //TODO regra de transformar ativos em entidades.
     }
@@ -77,17 +78,83 @@ public class Carteira {
         ativos.forEach(ativo -> {
 
             if (ativo.getTipoAtivo().equals(TipoAtivoEnum.ACAO))
-                this.acoes.add(new AcaoFactory().create(ativo));
+                this.adicionarAcao(ativo);
 
             if (ativo.getTipoAtivo().equals(TipoAtivoEnum.FUNDO_IMOBILIARIO))
-                this.fundosImobiliarios.add(new FundoImobiliarioFactory().create(ativo));
+                this.adicionarFundoImobiliario(ativo);
 
             if (ativo.getTipoAtivo().equals(TipoAtivoEnum.REIT))
-                this.reits.add(new ReitFactory().create(ativo));
+                this.adicionarReit(ativo);
 
             if (ativo.getTipoAtivo().equals(TipoAtivoEnum.STOCK))
-                this.stocks.add(new StockFactory().create(ativo));
+                this.adicionarStock(ativo);
         });
 
     }
+
+    private void adicionarStock(Ativo input) {
+        final var stock = new StockFactory().create(input);
+
+        final var optionalStock = this.getStocks().stream()
+                .filter(ativo -> ativo.getCodigo().equalsIgnoreCase(input.getCodigo()))
+                .findFirst();
+
+        if (optionalStock.isEmpty()) {
+            this.stocks.add(stock);
+        } else {
+            final var stockCarteira = optionalStock.get();
+            stockCarteira.adicionar(stock);
+        }
+
+
+    }
+
+    private void adicionarReit(Ativo input) {
+        final var reit = new ReitFactory().create(input);
+
+        final var optionalReit = this.getReits().stream()
+                .filter(ativo -> ativo.getCodigo().equalsIgnoreCase(input.getCodigo()))
+                .findFirst();
+
+        if (optionalReit.isEmpty()) {
+            this.reits.add(reit);
+        } else {
+            final var reitCarteira = optionalReit.get();
+            reitCarteira.adicionar(reit);
+        }
+
+    }
+
+    private void adicionarFundoImobiliario(Ativo input) {
+        final var fundoImobiliario = new FundoImobiliarioFactory().create(input);
+
+        final var optionalFundoImobiliario = this.getFundosImobiliarios().stream()
+                .filter(ativo -> ativo.getCodigo().equalsIgnoreCase(input.getCodigo()))
+                .findFirst();
+
+        if (optionalFundoImobiliario.isEmpty()) {
+            this.fundosImobiliarios.add(fundoImobiliario);
+        } else {
+            final var fiiCarteira = optionalFundoImobiliario.get();
+            fiiCarteira.adicionar(fundoImobiliario);
+        }
+
+    }
+
+    private void adicionarAcao(Ativo input) {
+        final var acao = new AcaoFactory().create(input);
+
+        final var optionalAcao = this.getAcoes().stream()
+                .filter(ativo -> ativo.getCodigo().equalsIgnoreCase(input.getCodigo()))
+                .findFirst();
+
+        if (optionalAcao.isEmpty()) {
+            this.acoes.add(acao);
+        } else {
+            final var acaoCarteira = optionalAcao.get();
+            acaoCarteira.adicionar(acao);
+        }
+    }
+
+
 }
