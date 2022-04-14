@@ -3,6 +3,7 @@ package br.com.stocksmaps.application.controllers;
 import br.com.stocksmaps.application.dtos.inputModel.CarteiraInputModel;
 import br.com.stocksmaps.application.dtos.viewModel.CarteiraViewModel;
 import br.com.stocksmaps.application.useCases.CriarCarteiraUseCase;
+import br.com.stocksmaps.infra.adapters.HGBrasilHttpClient;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import javax.validation.Valid;
 public class CarteiraController {
 
     private final CriarCarteiraUseCase criarCarteiraUseCase;
+    private final HGBrasilHttpClient client;
 
     @PostMapping
     public ResponseEntity<CarteiraViewModel> criar(@Valid @RequestBody CarteiraInputModel input) {
@@ -29,8 +31,5 @@ public class CarteiraController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
     }
-
-
-
 
 }
