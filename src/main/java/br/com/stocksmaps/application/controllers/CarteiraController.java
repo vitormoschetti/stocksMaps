@@ -7,10 +7,7 @@ import br.com.stocksmaps.infra.adapters.HGBrasilHttpClient;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -30,6 +27,13 @@ public class CarteiraController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
+    }
+
+    @GetMapping
+    public void teste(){
+        this.client.autenticarChave();
+        this.client.obterIndices();
+        this.client.obterAtivo();
     }
 
 }
