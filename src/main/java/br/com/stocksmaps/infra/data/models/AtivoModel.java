@@ -48,7 +48,7 @@ public class AtivoModel implements Serializable, IEntity {
         this.id = ativo.getId();
         this.codigo = ativo.getCodigo();
         this.tipoAtivo = ativo.getTipoAtivo();
-        this.preco = ativo.getPreco();
+        this.preco = ativo.getPrecoMedio();
         this.quantidade = ativo.getQuantidade();
         this.dataUltimaCompra = ativo.getDataUltimaCompra();
     }
@@ -57,7 +57,7 @@ public class AtivoModel implements Serializable, IEntity {
         this.id = ativo.getId();
         this.codigo = ativo.getCodigo();
         this.tipoAtivo = ativo.getTipoAtivo();
-        this.preco = ativo.getPreco();
+        this.preco = ativo.getPrecoMedio();
         this.quantidade = ativo.getQuantidade();
         this.dataUltimaCompra = ativo.getDataUltimaCompra();
     }
@@ -66,7 +66,7 @@ public class AtivoModel implements Serializable, IEntity {
         this.id = ativo.getId();
         this.codigo = ativo.getCodigo();
         this.tipoAtivo = ativo.getTipoAtivo();
-        this.preco = ativo.getPreco();
+        this.preco = ativo.getPrecoMedio();
         this.quantidade = ativo.getQuantidade();
         this.dataUltimaCompra = ativo.getDataUltimaCompra();
     }
@@ -75,7 +75,7 @@ public class AtivoModel implements Serializable, IEntity {
         this.id = ativo.getId();
         this.codigo = ativo.getCodigo();
         this.tipoAtivo = ativo.getTipoAtivo();
-        this.preco = ativo.getPreco();
+        this.preco = ativo.getPrecoMedio();
         this.quantidade = ativo.getQuantidade();
         this.dataUltimaCompra = ativo.getDataUltimaCompra();
     }

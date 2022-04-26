@@ -25,7 +25,6 @@ public class AtivoController {
 
         return ResponseEntity.ok().body(carteira);
 
-
     }
 
 }

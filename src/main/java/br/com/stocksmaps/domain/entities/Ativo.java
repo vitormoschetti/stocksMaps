@@ -16,14 +16,15 @@ public abstract class Ativo {
     private Long id;
     private String codigo;
     private TipoAtivoEnum tipoAtivo;
-    private BigDecimal preco;
+    private BigDecimal precoMedio;
     private BigDecimal quantidade;
     private String dataUltimaCompra;
+    private BigDecimal precoAtual;
 
     public void criarNovo(AtivoInputModel input) {
         this.codigo = input.getCodigo();
         this.tipoAtivo = input.getTipoAtivo();
-        this.preco = input.getPreco();
+        this.precoMedio = input.getPreco();
         this.quantidade = input.getQuantidade();
         this.dataUltimaCompra = input.getDataCompra();
     }
@@ -32,7 +33,7 @@ public abstract class Ativo {
         this.id = input.getId();
         this.codigo = input.getCodigo();
         this.tipoAtivo = input.getTipoAtivo();
-        this.preco = input.getPreco();
+        this.precoMedio = input.getPreco();
         this.quantidade = input.getQuantidade();
         this.dataUltimaCompra = input.getDataUltimaCompra();
     }
@@ -41,7 +42,7 @@ public abstract class Ativo {
         this.id = input.getId();
         this.codigo = input.getCodigo();
         this.tipoAtivo = input.getTipoAtivo();
-        this.preco = input.getPreco();
+        this.precoMedio = input.getPrecoMedio();
         this.quantidade = input.getQuantidade();
         this.dataUltimaCompra = input.getDataUltimaCompra();
         validar();
@@ -50,7 +51,7 @@ public abstract class Ativo {
     protected abstract void validar();
 
     protected void adicionar(Ativo ativo) {
-        this.fazerPrecoMedio(ativo.getPreco(), ativo.getQuantidade());
+        this.fazerPrecoMedio(ativo.getPrecoMedio(), ativo.getQuantidade());
         this.adicionarQuantidade(ativo.getQuantidade());
         this.atualizarDataCompra(ativo.getDataUltimaCompra());
     }
@@ -64,11 +65,15 @@ public abstract class Ativo {
     }
 
     private void fazerPrecoMedio(BigDecimal precoMedio, BigDecimal quantidade) {
-        this.preco = (this.totalAtivo(this.preco, this.quantidade).add(this.totalAtivo(precoMedio, quantidade))).divide(this.quantidade.add(quantidade), 2, RoundingMode.HALF_UP);
+        this.precoMedio = (this.totalAtivo(this.precoMedio, this.quantidade).add(this.totalAtivo(precoMedio, quantidade))).divide(this.quantidade.add(quantidade), 2, RoundingMode.HALF_UP);
     }
 
     private BigDecimal totalAtivo(BigDecimal precoMedio, BigDecimal quantidade) {
         return precoMedio.multiply(quantidade);
+    }
+
+    protected void atualizarPrecoAtual(BigDecimal precoAtual) {
+        this.precoAtual = precoAtual;
     }
 
 

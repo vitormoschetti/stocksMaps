@@ -1,5 +1,6 @@
 package br.com.stocksmaps.infra.adapters;
 
+import br.com.stocksmaps.application.dtos.inputModel.AcaoInputModel;
 import br.com.stocksmaps.core.httpClient.BaseFeign;
 import br.com.stocksmaps.core.httpClient.FeignRequestInterceptor;
 import feign.codec.Encoder;
@@ -27,9 +28,9 @@ public class HGBrasilHttpClient extends BaseFeign<IHGBrasilClient> {
         System.out.println(response.getBody());
     }
 
-    public void obterAtivo(){
-        final var response = this.client.obterAtivo("wege3");
-        System.out.println(response.getBody());
+    public AcaoInputModel obterAtivo(String codigo){
+        final var response = this.client.obterAtivo(codigo);
+        return response.getBody();
     }
 
 

@@ -3,6 +3,7 @@ package br.com.stocksmaps.application.controllers;
 import br.com.stocksmaps.application.dtos.inputModel.CarteiraInputModel;
 import br.com.stocksmaps.application.dtos.viewModel.CarteiraViewModel;
 import br.com.stocksmaps.application.useCases.CriarCarteiraUseCase;
+import br.com.stocksmaps.application.useCases.SincronizarCarteiraUseCase;
 import br.com.stocksmaps.infra.adapters.HGBrasilHttpClient;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import javax.validation.Valid;
 public class CarteiraController {
 
     private final CriarCarteiraUseCase criarCarteiraUseCase;
+    private final SincronizarCarteiraUseCase sincronizarCarteiraUseCase;
     private final HGBrasilHttpClient client;
 
     @PostMapping
@@ -29,11 +31,17 @@ public class CarteiraController {
 
     }
 
+    @PostMapping("{id}/sincronizar")
+    public void sincronizarCarteira(@PathVariable Long id){
+        this.sincronizarCarteiraUseCase.execute(id);
+    }
+
+
     @GetMapping
     public void teste(){
         this.client.autenticarChave();
         this.client.obterIndices();
-        this.client.obterAtivo();
+        this.client.obterAtivo("ITUB4");
     }
 
 }
