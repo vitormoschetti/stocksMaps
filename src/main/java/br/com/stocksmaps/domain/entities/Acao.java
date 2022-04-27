@@ -6,10 +6,6 @@ import lombok.Getter;
 @Getter
 public class Acao extends Ativo {
 
-    @Override
-    protected void validar() {
-    }
-
     public void sincronizar(AcaoInputModel acaoInputModel) {
         final var dadosAcao = acaoInputModel.getAcao(this.getCodigo());
         this.atualizarPrecoAtual(dadosAcao.getPrecoAtual());

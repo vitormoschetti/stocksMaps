@@ -12,9 +12,6 @@ public class AtivoInputModelParaAtivo implements IFactoryWithParams<AtivoInputMo
     public Ativo create(AtivoInputModel input) {
 
         final var ativo = new Ativo() {
-            @Override
-            protected void validar() {
-            }
         };
 
         ativo.criarNovo(input);

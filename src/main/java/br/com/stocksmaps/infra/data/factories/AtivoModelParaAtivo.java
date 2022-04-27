@@ -11,10 +11,6 @@ public class AtivoModelParaAtivo implements IFactoryWithParams<AtivoModel, Ativo
     @Override
     public Ativo create(AtivoModel ativoModel) {
         final var ativo = new Ativo() {
-            @Override
-            protected void validar() {
-
-            }
         };
 
         ativo.criar(ativoModel);

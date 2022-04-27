@@ -50,6 +50,8 @@ public class CarteiraRepository implements ICarteiraRepository {
 
         this.adapter.salvar(carteiraModel);
 
+        carteira = factoryEntity.create(carteiraModel);
+
         return null;
     }
 }

@@ -46,10 +46,7 @@ public abstract class Ativo {
         this.precoMedio = input.getPrecoMedio();
         this.quantidade = input.getQuantidade();
         this.dataUltimaCompra = input.getDataUltimaCompra();
-        validar();
     }
-
-    protected abstract void validar();
 
     protected void adicionar(Ativo ativo) {
         this.fazerPrecoMedio(ativo.getPrecoMedio(), ativo.getQuantidade());

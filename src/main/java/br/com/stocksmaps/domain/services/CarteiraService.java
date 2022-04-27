@@ -43,8 +43,6 @@ public class CarteiraService implements ICarteiraService {
         sincronizarAcoes(carteira);
         sincronizarFiis(carteira);
 
-        carteira.calcularValorTotal();
-
         this.repository.atualizar(carteira);
 
         return carteira;

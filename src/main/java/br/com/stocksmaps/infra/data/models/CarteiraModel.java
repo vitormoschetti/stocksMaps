@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +28,7 @@ public class CarteiraModel implements Serializable, IEntity {
     @SequenceGenerator(name = "gen_" + TABLE_NAME, sequenceName = "sq_" + TABLE_NAME, allocationSize = 1)
     private Long id;
 
-    @Column(name = "nome", nullable = false, length = 20, unique = true)
+    @Column(nullable = false, length = 20, unique = true)
     private String nome;
 
     @JoinColumn(name = "carteira_id")
@@ -40,8 +41,9 @@ public class CarteiraModel implements Serializable, IEntity {
     @Column(name = "totalAtual")
     private BigDecimal totalAtual;
 
-    @Column(name = "status")
     private Character status;
+
+    private BigDecimal variacao;
 
     public void criarNovo(Carteira carteira) {
         ativos = new ArrayList<>();
@@ -72,6 +74,30 @@ public class CarteiraModel implements Serializable, IEntity {
         this.ativos.addAll(reits);
         this.ativos.addAll(stocks);
 
+        this.calcularValorTotal();
+
+    }
+
+    private void calcularValorTotal() {
+        this.totalAtual = totalAtual();
+        this.totalInvestido = totalInvestido();
+        this.variacao = variacaoCarteira();
+    }
+
+    private BigDecimal variacaoCarteira() {
+        return (this.totalAtual.divide(this.totalInvestido, 3, RoundingMode.HALF_UP)).multiply(BigDecimal.valueOf(100)).subtract(BigDecimal.valueOf(100));
+    }
+
+    private BigDecimal totalInvestido() {
+        return this.getAtivos().stream()
+                .map(ativo -> ativo.getPrecoMedio().multiply(ativo.getQuantidade()))
+                .reduce(BigDecimal.ZERO, BigDecimal::add).setScale(2);
+    }
+
+    private BigDecimal totalAtual() {
+        return this.getAtivos().stream()
+                .map(ativo -> ativo.getPrecoAtual().multiply(ativo.getQuantidade()))
+                .reduce(BigDecimal.ZERO, BigDecimal::add).setScale(2);
     }
 
 
