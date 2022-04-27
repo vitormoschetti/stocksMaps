@@ -1,7 +1,7 @@
 package br.com.stocksmaps.core.crudOperations;
 
-public interface IAtualizar<E, Key, Input> {
+public interface IAtualizar<E, Input> {
 
-    E atualizar(Key id, Input input);
+    E atualizar(Input input);
 
 }

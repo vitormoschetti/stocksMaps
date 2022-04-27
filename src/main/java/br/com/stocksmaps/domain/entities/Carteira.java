@@ -7,6 +7,7 @@ import br.com.stocksmaps.domain.pattern.AcaoFactory;
 import br.com.stocksmaps.domain.pattern.FundoImobiliarioFactory;
 import br.com.stocksmaps.domain.pattern.ReitFactory;
 import br.com.stocksmaps.domain.pattern.StockFactory;
+import br.com.stocksmaps.infra.adapters.HGBrasilHttpClient;
 import br.com.stocksmaps.infra.data.models.CarteiraModel;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -157,4 +158,8 @@ public class Carteira {
     }
 
 
+    public void calcularValorTotal() {
+
+
+    }
 }

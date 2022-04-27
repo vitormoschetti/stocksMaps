@@ -20,6 +20,7 @@ public abstract class Ativo {
     private BigDecimal quantidade;
     private String dataUltimaCompra;
     private BigDecimal precoAtual;
+    private BigDecimal variacao;
 
     public void criarNovo(AtivoInputModel input) {
         this.codigo = input.getCodigo();
@@ -33,7 +34,7 @@ public abstract class Ativo {
         this.id = input.getId();
         this.codigo = input.getCodigo();
         this.tipoAtivo = input.getTipoAtivo();
-        this.precoMedio = input.getPreco();
+        this.precoMedio = input.getPrecoMedio();
         this.quantidade = input.getQuantidade();
         this.dataUltimaCompra = input.getDataUltimaCompra();
     }
@@ -74,6 +75,7 @@ public abstract class Ativo {
 
     protected void atualizarPrecoAtual(BigDecimal precoAtual) {
         this.precoAtual = precoAtual;
+        this.variacao = (this.precoAtual.divide(this.precoMedio, 3, RoundingMode.HALF_UP)).multiply(BigDecimal.valueOf(100)).subtract(BigDecimal.valueOf(100));
     }
 
 
