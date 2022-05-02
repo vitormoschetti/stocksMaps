@@ -51,23 +51,29 @@ public class AtivoModel implements Serializable, IEntity {
     @Column(name = "variacao")
     private BigDecimal variacao;
 
+    @Column(name = "totalInvestido")
+    private BigDecimal totalInvestido;
+
+    @Column(name = "totalAtual")
+    private BigDecimal totalAtual;
+
     public AtivoModel(Acao ativo) {
-        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getDataUltimaCompra(), ativo.getPrecoAtual(), ativo.getVariacao());
+        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getDataUltimaCompra(), ativo.getPrecoAtual(), ativo.getVariacao(), ativo.getTotalInvestido(), ativo.getTotalAtual());
     }
 
     public AtivoModel(FundoImobiliario ativo) {
-        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getDataUltimaCompra(), ativo.getPrecoAtual(), ativo.getVariacao());
+        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getDataUltimaCompra(), ativo.getPrecoAtual(), ativo.getVariacao(), ativo.getTotalInvestido(), ativo.getTotalAtual());
     }
 
     public AtivoModel(Reit ativo) {
-        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getDataUltimaCompra(), ativo.getPrecoAtual(), ativo.getVariacao());
+        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getDataUltimaCompra(), ativo.getPrecoAtual(), ativo.getVariacao(), ativo.getTotalInvestido(), ativo.getTotalAtual());
     }
 
     public AtivoModel(Stock ativo) {
-        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getDataUltimaCompra(), ativo.getPrecoAtual(), ativo.getVariacao());
+        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getDataUltimaCompra(), ativo.getPrecoAtual(), ativo.getVariacao(), ativo.getTotalInvestido(), ativo.getTotalAtual());
     }
 
-    private void mapearCampos(Long id, String codigo, TipoAtivoEnum tipoAtivo, BigDecimal precoMedio, BigDecimal quantidade, String dataUltimaCompra, BigDecimal precoAtual, BigDecimal variacao) {
+    private void mapearCampos(Long id, String codigo, TipoAtivoEnum tipoAtivo, BigDecimal precoMedio, BigDecimal quantidade, String dataUltimaCompra, BigDecimal precoAtual, BigDecimal variacao, BigDecimal totalInvestido, BigDecimal totalAtual) {
         this.id = id;
         this.codigo = codigo;
         this.tipoAtivo = tipoAtivo;
@@ -76,6 +82,8 @@ public class AtivoModel implements Serializable, IEntity {
         this.dataUltimaCompra = dataUltimaCompra;
         this.precoAtual = precoAtual;
         this.variacao = variacao;
+        this.totalInvestido = totalInvestido;
+        this.totalAtual = totalAtual;
     }
 
 }

@@ -44,14 +44,15 @@ public class CarteiraRepository implements ICarteiraRepository {
     }
 
     @Override
-    public Void atualizar(Carteira carteira) {
+    public Carteira atualizar(Carteira carteira) {
 
         final var carteiraModel = this.factoryModel.create(carteira);
 
+        carteiraModel.calcularValorTotal();
+
         this.adapter.salvar(carteiraModel);
 
-        carteira = factoryEntity.create(carteiraModel);
+        return factoryEntity.create(carteiraModel);
 
-        return null;
     }
 }

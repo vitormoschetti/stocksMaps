@@ -7,7 +7,6 @@ import br.com.stocksmaps.domain.pattern.AcaoFactory;
 import br.com.stocksmaps.domain.pattern.FundoImobiliarioFactory;
 import br.com.stocksmaps.domain.pattern.ReitFactory;
 import br.com.stocksmaps.domain.pattern.StockFactory;
-import br.com.stocksmaps.infra.adapters.HGBrasilHttpClient;
 import br.com.stocksmaps.infra.data.models.CarteiraModel;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -18,7 +17,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @ToString

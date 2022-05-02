@@ -1,4 +1,4 @@
-package br.com.stocksmaps.core.httpClient;
+package br.com.stocksmaps.infra.adapters.hgBrasil;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FeignRequestInterceptor implements RequestInterceptor {
+public class HgBrasilRequestInterceptor implements RequestInterceptor {
 
-    private String secret;
+    private final String secret;
 
-    public FeignRequestInterceptor(@Value("${secret.hgbrasil}") String secret) {
+    public HgBrasilRequestInterceptor(@Value("${http.hgbrasil.secret}") String secret) {
         this.secret = secret;
     }
 

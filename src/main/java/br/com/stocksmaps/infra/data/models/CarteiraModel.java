@@ -74,11 +74,9 @@ public class CarteiraModel implements Serializable, IEntity {
         this.ativos.addAll(reits);
         this.ativos.addAll(stocks);
 
-        this.calcularValorTotal();
-
     }
 
-    private void calcularValorTotal() {
+    public void calcularValorTotal() {
         this.totalAtual = totalAtual();
         this.totalInvestido = totalInvestido();
         this.variacao = variacaoCarteira();

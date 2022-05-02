@@ -22,30 +22,33 @@ public abstract class Ativo {
     private BigDecimal precoAtual;
     private BigDecimal variacao;
 
+    private BigDecimal totalInvestido;
+
+    private BigDecimal totalAtual;
+
     public void criarNovo(AtivoInputModel input) {
-        this.codigo = input.getCodigo();
-        this.tipoAtivo = input.getTipoAtivo();
-        this.precoMedio = input.getPreco();
-        this.quantidade = input.getQuantidade();
-        this.dataUltimaCompra = input.getDataCompra();
+        mapearCampos(null, input.getCodigo(), input.getTipoAtivo(), input.getPreco(), input.getQuantidade(), input.getDataCompra(), null, null, null, null);
     }
 
     public void criar(AtivoModel input) {
-        this.id = input.getId();
-        this.codigo = input.getCodigo();
-        this.tipoAtivo = input.getTipoAtivo();
-        this.precoMedio = input.getPrecoMedio();
-        this.quantidade = input.getQuantidade();
-        this.dataUltimaCompra = input.getDataUltimaCompra();
+        mapearCampos(input.getId(), input.getCodigo(), input.getTipoAtivo(), input.getPrecoMedio(), input.getQuantidade(), input.getDataUltimaCompra(), input.getPrecoAtual(), input.getVariacao(), input.getTotalInvestido(), input.getTotalAtual());
     }
 
     public void criar(Ativo input) {
-        this.id = input.getId();
-        this.codigo = input.getCodigo();
-        this.tipoAtivo = input.getTipoAtivo();
-        this.precoMedio = input.getPrecoMedio();
-        this.quantidade = input.getQuantidade();
-        this.dataUltimaCompra = input.getDataUltimaCompra();
+        mapearCampos(input.getId(), input.getCodigo(), input.getTipoAtivo(), input.getPrecoMedio(), input.getQuantidade(), input.getDataUltimaCompra(), input.getPrecoAtual(), input.getVariacao(), input.getTotalInvestido(), input.getTotalAtual());
+    }
+
+    private void mapearCampos(Long id, String codigo, TipoAtivoEnum tipoAtivo, BigDecimal precoMedio, BigDecimal quantidade, String dataUltimaCompra, BigDecimal precoAtual, BigDecimal variacao, BigDecimal totalInvestido, BigDecimal totalAtual) {
+        this.id = id;
+        this.codigo = codigo;
+        this.tipoAtivo = tipoAtivo;
+        this.precoMedio = precoMedio;
+        this.quantidade = quantidade;
+        this.dataUltimaCompra = dataUltimaCompra;
+        this.precoAtual = precoAtual;
+        this.variacao = variacao;
+        this.totalInvestido = totalInvestido;
+        this.totalAtual = totalAtual;
     }
 
     protected void adicionar(Ativo ativo) {
@@ -72,6 +75,8 @@ public abstract class Ativo {
 
     protected void atualizarPrecoAtual(BigDecimal precoAtual) {
         this.precoAtual = precoAtual;
+        this.totalAtual = this.totalAtivo(this.precoAtual, this.quantidade).setScale(2, RoundingMode.HALF_UP);
+        this.totalInvestido = this.totalAtivo(this.precoMedio, this.quantidade).setScale(2, RoundingMode.HALF_UP);
         this.variacao = (this.precoAtual.divide(this.precoMedio, 3, RoundingMode.HALF_UP)).multiply(BigDecimal.valueOf(100)).subtract(BigDecimal.valueOf(100));
     }
 

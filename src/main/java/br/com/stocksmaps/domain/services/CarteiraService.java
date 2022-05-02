@@ -7,7 +7,7 @@ import br.com.stocksmaps.application.factories.CarteiraParaCarteiraViewModel;
 import br.com.stocksmaps.domain.entities.Carteira;
 import br.com.stocksmaps.domain.repositories.ICarteiraRepository;
 import br.com.stocksmaps.domain.services.interfaces.ICarteiraService;
-import br.com.stocksmaps.infra.adapters.HGBrasilHttpClient;
+import br.com.stocksmaps.infra.adapters.hgBrasil.HGBrasilHttpClient;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -43,9 +43,7 @@ public class CarteiraService implements ICarteiraService {
         sincronizarAcoes(carteira);
         sincronizarFiis(carteira);
 
-        this.repository.atualizar(carteira);
-
-        return carteira;
+        return this.repository.atualizar(carteira);
 
     }
 

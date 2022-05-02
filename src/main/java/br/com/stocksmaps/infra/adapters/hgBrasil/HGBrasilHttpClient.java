@@ -1,8 +1,7 @@
-package br.com.stocksmaps.infra.adapters;
+package br.com.stocksmaps.infra.adapters.hgBrasil;
 
 import br.com.stocksmaps.application.dtos.inputModel.AcaoInputModel;
 import br.com.stocksmaps.core.httpClient.BaseFeign;
-import br.com.stocksmaps.core.httpClient.FeignRequestInterceptor;
 import feign.codec.Encoder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.openfeign.support.ResponseEntityDecoder;
@@ -14,7 +13,7 @@ public class HGBrasilHttpClient extends BaseFeign<IHGBrasilClient> {
     public HGBrasilHttpClient(@Value("${http.hgbrasil}") String host,
                               final ResponseEntityDecoder decoder,
                               final Encoder encoder,
-                              final FeignRequestInterceptor requestInterceptor) {
+                              final HgBrasilRequestInterceptor requestInterceptor) {
         super(host, IHGBrasilClient.class, decoder, encoder, requestInterceptor);
     }
 

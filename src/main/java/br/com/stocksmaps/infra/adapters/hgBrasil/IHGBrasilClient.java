@@ -1,4 +1,4 @@
-package br.com.stocksmaps.infra.adapters;
+package br.com.stocksmaps.infra.adapters.hgBrasil;
 
 import br.com.stocksmaps.application.dtos.inputModel.AcaoInputModel;
 import br.com.stocksmaps.application.dtos.inputModel.AutenticacaoChaveHGBrasilInputModel;
