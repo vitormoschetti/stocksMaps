@@ -1,16 +1,16 @@
 package br.com.stocksmaps.application.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
+@Setter
 @Getter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class YahooFinanceDTO {
 
     @JsonProperty("quoteResponse")
-    private YahooFinanceResponseDTO response;
+    private YahooFinanceResponseDTO quoteResponse;
 
 }

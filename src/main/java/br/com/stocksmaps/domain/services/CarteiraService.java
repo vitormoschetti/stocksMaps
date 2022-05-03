@@ -9,6 +9,9 @@ import br.com.stocksmaps.domain.repositories.ICarteiraRepository;
 import br.com.stocksmaps.domain.services.interfaces.ICarteiraService;
 import br.com.stocksmaps.infra.adapters.hgBrasil.HGBrasilHttpClient;
 import org.springframework.stereotype.Service;
+import yahoofinance.YahooFinance;
+
+import java.io.IOException;
 
 @Service
 public class CarteiraService implements ICarteiraService {
@@ -42,9 +45,22 @@ public class CarteiraService implements ICarteiraService {
 
         sincronizarAcoes(carteira);
         sincronizarFiis(carteira);
+        sincronizarStocks(carteira);
 
         return this.repository.atualizar(carteira);
 
+    }
+
+    private void sincronizarStocks(Carteira carteira) {
+            carteira.getStocks().forEach(stock -> {
+        try {
+                final var stockYF = YahooFinance.get(stock.getCodigo());
+//                final var dollarYF = YahooFinance.getFx("USDBRL=X");
+                stock.sincronizar(stockYF);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+            });
     }
 
     private void sincronizarAcoes(Carteira carteira) {

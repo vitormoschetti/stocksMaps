@@ -10,16 +10,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class HGBrasilHttpClient extends BaseFeign<IHGBrasilClient> {
 
-    public HGBrasilHttpClient(@Value("${http.hgbrasil}") String host,
+    public HGBrasilHttpClient(@Value("${http.hgbrasil}") final String host,
                               final ResponseEntityDecoder decoder,
                               final Encoder encoder,
                               final HgBrasilRequestInterceptor requestInterceptor) {
         super(host, IHGBrasilClient.class, decoder, encoder, requestInterceptor);
-    }
-
-    public void autenticarChave() {
-        final var response = this.client.autenticarChave();
-        System.out.println(response.getBody());
     }
 
     public void obterIndices() {
@@ -27,13 +22,10 @@ public class HGBrasilHttpClient extends BaseFeign<IHGBrasilClient> {
         System.out.println(response.getBody());
     }
 
-    public AcaoInputModel obterAtivo(String codigo){
+    public AcaoInputModel obterAtivo(String codigo) {
         final var response = this.client.obterAtivo(codigo);
         return response.getBody();
     }
-
-
-
 
 
 }

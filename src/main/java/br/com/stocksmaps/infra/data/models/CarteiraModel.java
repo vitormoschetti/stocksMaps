@@ -89,13 +89,13 @@ public class CarteiraModel implements Serializable, IEntity {
     private BigDecimal totalInvestido() {
         return this.getAtivos().stream()
                 .map(ativo -> ativo.getPrecoMedio().multiply(ativo.getQuantidade()))
-                .reduce(BigDecimal.ZERO, BigDecimal::add).setScale(2);
+                .reduce(BigDecimal.ZERO, BigDecimal::add).setScale(2, RoundingMode.HALF_UP);
     }
 
     private BigDecimal totalAtual() {
         return this.getAtivos().stream()
                 .map(ativo -> ativo.getPrecoAtual().multiply(ativo.getQuantidade()))
-                .reduce(BigDecimal.ZERO, BigDecimal::add).setScale(2);
+                .reduce(BigDecimal.ZERO, BigDecimal::add).setScale(2, RoundingMode.HALF_UP);
     }
 
 

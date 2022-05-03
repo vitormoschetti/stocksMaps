@@ -1,16 +1,18 @@
 package br.com.stocksmaps.application.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
+import java.math.BigDecimal;
+
+@Setter
 @Getter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class YahooFinanceResultado {
 
-    @JsonProperty("language")
-    private String precoAtual;
+    @JsonProperty("regularMarketPrice")
+    private BigDecimal precoAtual;
 
 }

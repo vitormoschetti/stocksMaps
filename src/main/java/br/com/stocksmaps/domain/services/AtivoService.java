@@ -31,7 +31,7 @@ public class AtivoService implements IAtivoService {
 
         carteira.adicionar(ativos);
 
-        this.carteiraRepository.criar(carteira);
+        this.carteiraRepository.atualizar(carteira);
 
         return carteira;
     }

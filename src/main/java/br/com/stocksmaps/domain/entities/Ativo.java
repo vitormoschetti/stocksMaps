@@ -27,7 +27,7 @@ public abstract class Ativo {
     private BigDecimal totalAtual;
 
     public void criarNovo(AtivoInputModel input) {
-        mapearCampos(null, input.getCodigo(), input.getTipoAtivo(), input.getPreco(), input.getQuantidade(), input.getDataCompra(), null, null, null, null);
+        mapearCampos(null, input.getCodigo(), input.getTipoAtivo(), input.getPreco(), input.getQuantidade(), input.getDataCompra(), BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
     }
 
     public void criar(AtivoModel input) {
