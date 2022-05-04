@@ -3,13 +3,11 @@ package br.com.stocksmaps.infra.data.models;
 import br.com.stocksmaps.core.IEntity;
 import br.com.stocksmaps.domain.entities.Acao;
 import br.com.stocksmaps.domain.entities.FundoImobiliario;
-import br.com.stocksmaps.domain.entities.Reit;
 import br.com.stocksmaps.domain.entities.Stock;
 import br.com.stocksmaps.domain.enums.TipoAtivoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -42,9 +40,6 @@ public class AtivoModel implements Serializable, IEntity {
     @Column(name = "quantidade", nullable = false)
     private BigDecimal quantidade;
 
-    @Column(name = "dataUltimaCompra", nullable = false)
-    private String dataUltimaCompra;
-
     @Column(name = "precoAtual")
     private BigDecimal precoAtual;
 
@@ -58,28 +53,23 @@ public class AtivoModel implements Serializable, IEntity {
     private BigDecimal totalAtual;
 
     public AtivoModel(Acao ativo) {
-        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getDataUltimaCompra(), ativo.getPrecoAtual(), ativo.getVariacao(), ativo.getTotalInvestido(), ativo.getTotalAtual());
+        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getPrecoAtual(), ativo.getVariacao(), ativo.getTotalInvestido(), ativo.getTotalAtual());
     }
 
     public AtivoModel(FundoImobiliario ativo) {
-        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getDataUltimaCompra(), ativo.getPrecoAtual(), ativo.getVariacao(), ativo.getTotalInvestido(), ativo.getTotalAtual());
-    }
-
-    public AtivoModel(Reit ativo) {
-        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getDataUltimaCompra(), ativo.getPrecoAtual(), ativo.getVariacao(), ativo.getTotalInvestido(), ativo.getTotalAtual());
+        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getPrecoAtual(), ativo.getVariacao(), ativo.getTotalInvestido(), ativo.getTotalAtual());
     }
 
     public AtivoModel(Stock ativo) {
-        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getDataUltimaCompra(), ativo.getPrecoAtual(), ativo.getVariacao(), ativo.getTotalInvestido(), ativo.getTotalAtual());
+        mapearCampos(ativo.getId(), ativo.getCodigo(), ativo.getTipoAtivo(), ativo.getPrecoMedio(), ativo.getQuantidade(), ativo.getPrecoAtual(), ativo.getVariacao(), ativo.getTotalInvestido(), ativo.getTotalAtual());
     }
 
-    private void mapearCampos(Long id, String codigo, TipoAtivoEnum tipoAtivo, BigDecimal precoMedio, BigDecimal quantidade, String dataUltimaCompra, BigDecimal precoAtual, BigDecimal variacao, BigDecimal totalInvestido, BigDecimal totalAtual) {
+    private void mapearCampos(Long id, String codigo, TipoAtivoEnum tipoAtivo, BigDecimal precoMedio, BigDecimal quantidade, BigDecimal precoAtual, BigDecimal variacao, BigDecimal totalInvestido, BigDecimal totalAtual) {
         this.id = id;
         this.codigo = codigo;
         this.tipoAtivo = tipoAtivo;
         this.precoMedio = precoMedio;
         this.quantidade = quantidade;
-        this.dataUltimaCompra = dataUltimaCompra;
         this.precoAtual = precoAtual;
         this.variacao = variacao;
         this.totalInvestido = totalInvestido;

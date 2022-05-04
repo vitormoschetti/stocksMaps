@@ -27,24 +27,23 @@ public abstract class Ativo {
     private BigDecimal totalAtual;
 
     public void criarNovo(AtivoInputModel input) {
-        mapearCampos(null, input.getCodigo(), input.getTipoAtivo(), input.getPreco(), input.getQuantidade(), input.getDataCompra(), BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
+        mapearCampos(null, input.getCodigo(), input.getTipoAtivo(), input.getPreco(), input.getQuantidade(), BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
     }
 
     public void criar(AtivoModel input) {
-        mapearCampos(input.getId(), input.getCodigo(), input.getTipoAtivo(), input.getPrecoMedio(), input.getQuantidade(), input.getDataUltimaCompra(), input.getPrecoAtual(), input.getVariacao(), input.getTotalInvestido(), input.getTotalAtual());
+        mapearCampos(input.getId(), input.getCodigo(), input.getTipoAtivo(), input.getPrecoMedio(), input.getQuantidade(), input.getPrecoAtual(), input.getVariacao(), input.getTotalInvestido(), input.getTotalAtual());
     }
 
     public void criar(Ativo input) {
-        mapearCampos(input.getId(), input.getCodigo(), input.getTipoAtivo(), input.getPrecoMedio(), input.getQuantidade(), input.getDataUltimaCompra(), input.getPrecoAtual(), input.getVariacao(), input.getTotalInvestido(), input.getTotalAtual());
+        mapearCampos(input.getId(), input.getCodigo(), input.getTipoAtivo(), input.getPrecoMedio(), input.getQuantidade(), input.getPrecoAtual(), input.getVariacao(), input.getTotalInvestido(), input.getTotalAtual());
     }
 
-    private void mapearCampos(Long id, String codigo, TipoAtivoEnum tipoAtivo, BigDecimal precoMedio, BigDecimal quantidade, String dataUltimaCompra, BigDecimal precoAtual, BigDecimal variacao, BigDecimal totalInvestido, BigDecimal totalAtual) {
+    private void mapearCampos(Long id, String codigo, TipoAtivoEnum tipoAtivo, BigDecimal precoMedio, BigDecimal quantidade, BigDecimal precoAtual, BigDecimal variacao, BigDecimal totalInvestido, BigDecimal totalAtual) {
         this.id = id;
         this.codigo = codigo;
         this.tipoAtivo = tipoAtivo;
         this.precoMedio = precoMedio;
         this.quantidade = quantidade;
-        this.dataUltimaCompra = dataUltimaCompra;
         this.precoAtual = precoAtual;
         this.variacao = variacao;
         this.totalInvestido = totalInvestido;

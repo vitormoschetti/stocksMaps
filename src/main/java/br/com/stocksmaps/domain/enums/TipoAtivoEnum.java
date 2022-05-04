@@ -9,7 +9,6 @@ public enum TipoAtivoEnum {
 
     ACAO,
     FUNDO_IMOBILIARIO,
-    STOCK,
-    REIT;
+    STOCK;
 
 }

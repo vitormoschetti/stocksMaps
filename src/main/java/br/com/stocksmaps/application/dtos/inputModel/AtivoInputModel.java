@@ -12,5 +12,4 @@ public class AtivoInputModel {
     private TipoAtivoEnum tipoAtivo;
     private BigDecimal preco;
     private BigDecimal quantidade;
-    private String dataCompra;
 }

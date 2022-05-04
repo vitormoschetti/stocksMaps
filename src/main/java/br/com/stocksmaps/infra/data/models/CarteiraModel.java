@@ -63,15 +63,11 @@ public class CarteiraModel implements Serializable, IEntity {
         final var fiis = carteira.getFundosImobiliarios().stream().map(AtivoModel::new
         ).collect(Collectors.toList());
 
-        final var reits = carteira.getReits().stream().map(AtivoModel::new
-        ).collect(Collectors.toList());
-
         final var stocks = carteira.getStocks().stream().map(AtivoModel::new
         ).collect(Collectors.toList());
 
         this.ativos.addAll(acoes);
         this.ativos.addAll(fiis);
-        this.ativos.addAll(reits);
         this.ativos.addAll(stocks);
 
     }

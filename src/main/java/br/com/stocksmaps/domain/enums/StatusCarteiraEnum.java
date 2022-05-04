@@ -1,13 +1,13 @@
 package br.com.stocksmaps.domain.enums;
 
-public enum StatusEnum {
+public enum StatusCarteiraEnum {
 
     ATIVA('A'),
     INATIVA('I');
 
     private final Character value;
 
-    StatusEnum(Character value) {
+    StatusCarteiraEnum(Character value) {
         this.value = value;
     }
 
@@ -15,8 +15,8 @@ public enum StatusEnum {
         return value;
     }
 
-    public static StatusEnum find(final char value) {
-        for (StatusEnum type : StatusEnum.values())
+    public static StatusCarteiraEnum find(final char value) {
+        for (StatusCarteiraEnum type : StatusCarteiraEnum.values())
             if (type.getValue() == value)
                 return type;
 
