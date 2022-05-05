@@ -19,24 +19,21 @@ public class CarteiraService implements ICarteiraService {
     private final HGBrasilHttpClient hgBrasilHttpClient;
     private final ICarteiraRepository repository;
     private final CarteiraInputModelParaCarteira factoryEntity;
-    private final CarteiraParaCarteiraViewModel factoryViewModel;
 
     public CarteiraService(HGBrasilHttpClient hgBrasilHttpClient, ICarteiraRepository repository,
-                           CarteiraInputModelParaCarteira factoryEntity, CarteiraParaCarteiraViewModel factoryViewModel) {
+                           CarteiraInputModelParaCarteira factoryEntity) {
         this.hgBrasilHttpClient = hgBrasilHttpClient;
         this.repository = repository;
         this.factoryEntity = factoryEntity;
-        this.factoryViewModel = factoryViewModel;
     }
 
     @Override
-    public CarteiraViewModel criarCarteira(CarteiraInputModel carteiraInputModel) {
+    public Carteira criarCarteira(CarteiraInputModel carteiraInputModel) {
 
         final var carteira = this.factoryEntity.create(carteiraInputModel);
 
-        final var entity = this.repository.criar(carteira);
+        return this.repository.criar(carteira);
 
-        return this.factoryViewModel.create(entity);
     }
 
     @Override

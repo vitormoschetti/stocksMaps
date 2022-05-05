@@ -7,7 +7,7 @@ import br.com.stocksmaps.domain.entities.Carteira;
 import br.com.stocksmaps.infra.data.models.CarteiraModel;
 
 public interface ICarteiraService extends IBaseService<CarteiraModel> {
-    CarteiraViewModel criarCarteira(CarteiraInputModel carteiraInputModel);
+    Carteira criarCarteira(CarteiraInputModel carteiraInputModel);
 
     Carteira sincronizarAtivos(Long idCarteira);
 }

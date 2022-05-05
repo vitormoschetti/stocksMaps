@@ -21,9 +21,7 @@ public abstract class Ativo {
     private String dataUltimaCompra;
     private BigDecimal precoAtual;
     private BigDecimal variacao;
-
     private BigDecimal totalInvestido;
-
     private BigDecimal totalAtual;
 
     public void criarNovo(AtivoInputModel input) {

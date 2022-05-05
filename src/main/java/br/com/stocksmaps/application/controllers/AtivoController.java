@@ -1,6 +1,7 @@
 package br.com.stocksmaps.application.controllers;
 
 import br.com.stocksmaps.application.dtos.inputModel.AtivosInputModel;
+import br.com.stocksmaps.application.dtos.viewModel.CarteiraViewModel;
 import br.com.stocksmaps.application.useCases.AdicionarAtivoUseCase;
 import br.com.stocksmaps.domain.entities.Carteira;
 import lombok.AllArgsConstructor;
@@ -18,8 +19,8 @@ public class AtivoController {
     private final AdicionarAtivoUseCase adicionarAtivoUseCase;
 
     @PostMapping("/{id}/carteira")
-    public ResponseEntity<Carteira> adicionar(@PathVariable(name = "id") Long idCarteira,
-                                              @Valid @RequestBody AtivosInputModel input) {
+    public ResponseEntity<CarteiraViewModel> adicionar(@PathVariable(name = "id") Long idCarteira,
+                                                       @Valid @RequestBody AtivosInputModel input) {
 
         final var carteira = this.adicionarAtivoUseCase.execute(Tuples.of(idCarteira, input));
 

@@ -31,7 +31,7 @@ public class CarteiraController {
     }
 
     @PostMapping("{id}/sincronizar")
-    public Carteira sincronizarCarteira(@PathVariable Long id) {
+    public CarteiraViewModel sincronizarCarteira(@PathVariable Long id) {
         return this.sincronizarCarteiraUseCase.execute(id);
     }
 
