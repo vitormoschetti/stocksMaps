@@ -5,6 +5,7 @@ import br.com.stocksmaps.application.dtos.viewModel.CarteiraViewModel;
 import br.com.stocksmaps.application.useCases.AdicionarAtivoUseCase;
 import br.com.stocksmaps.domain.entities.Carteira;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.util.function.Tuples;
@@ -24,7 +25,7 @@ public class AtivoController {
 
         final var carteira = this.adicionarAtivoUseCase.execute(Tuples.of(idCarteira, input));
 
-        return ResponseEntity.ok().body(carteira);
+        return ResponseEntity.status(HttpStatus.CREATED).body(carteira);
 
     }
 

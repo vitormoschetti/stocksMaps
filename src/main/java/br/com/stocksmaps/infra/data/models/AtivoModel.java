@@ -27,7 +27,7 @@ public class AtivoModel implements Serializable, IEntity {
     @SequenceGenerator(name = "gen_" + TABLE_NAME, sequenceName = "sq_" + TABLE_NAME, allocationSize = 1)
     private Long id;
 
-    @Column(name = "codigo", nullable = false, length = 6, unique = true)
+    @Column(name = "codigo", nullable = false, length = 6)
     private String codigo;
 
     @Enumerated(EnumType.STRING)
